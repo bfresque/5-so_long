@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 11:36:18 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:27:56 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 // 4- check si 1er ligne, derniere ligne debut et fin sont = 1
 5- vérifier s’il existe un chemin valide
 6- Faire attention qu'un C ne soit pas bloque derriere un E
-7- Si une erreur le programme doit quitter et retourner "Error\n"
+//7- Si une erreur le programme doit quitter et retourner "Error\n"
 */
 
 char	*read_file(char *map_file)
@@ -66,7 +66,7 @@ char	**load_map_file(char *map_file)
 char	**ft_put_in_tab(char *map_file)
 {
 	char	**tab;
-	int i;
+	int		i;
 
 	i = 0;
 	tab = load_map_file(map_file);
@@ -83,13 +83,15 @@ char	**ft_put_in_tab(char *map_file)
 	printf("\nCheck item : %d\n\n", ft_nb_obj(tab));
 	printf("\nCheck map : %d\n\n", check_map(tab));
 	/******************TEST***********************/
+
 	check_map(tab);
 	ft_free_tab(tab);
 	return (tab);
 }
+
 void	ft_free_tab(char **tab)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (tab[i])

@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:29:11 by bfresque         ###   ########.fr       */
+/*   Created: 2022/10/28 16:02:55 by baptistefre       #+#    #+#             */
+/*   Updated: 2023/01/12 11:56:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/libft.h"
 
-int		ft_check_first_line(char **tab);
-int		ft_check_begin_line(char **tab);
-int		ft_check_end_line(char **tab);
-int		ft_check_last_line(char **tab);
-int		ft_check_lenght_line(char **tab);
-int		check_map(char **tab);
-void	check_lignes(char *str);
-int		ft_nb_obj(char **tab);
-void	ft_free_tab(char **tab);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
 
-#endif
+	if (size == 0)
+	{
+		return (ft_strlen(src));
+	}
+	i = 0;
+	while (src[i] != '\0' && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
+}

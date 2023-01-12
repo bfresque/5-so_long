@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:29:11 by bfresque         ###   ########.fr       */
+/*   Created: 2022/11/21 11:23:32 by bfresque          #+#    #+#             */
+/*   Updated: 2023/01/12 11:56:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/libft.h"
 
-int		ft_check_first_line(char **tab);
-int		ft_check_begin_line(char **tab);
-int		ft_check_end_line(char **tab);
-int		ft_check_last_line(char **tab);
-int		ft_check_lenght_line(char **tab);
-int		check_map(char **tab);
-void	check_lignes(char *str);
-int		ft_nb_obj(char **tab);
-void	ft_free_tab(char **tab);
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}

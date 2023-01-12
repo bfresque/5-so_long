@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:29:11 by bfresque         ###   ########.fr       */
+/*   Created: 2022/11/29 10:47:01 by bfresque          #+#    #+#             */
+/*   Updated: 2023/01/12 11:51:23 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/ft_printf.h"
 
-int		ft_check_first_line(char **tab);
-int		ft_check_begin_line(char **tab);
-int		ft_check_end_line(char **tab);
-int		ft_check_last_line(char **tab);
-int		ft_check_lenght_line(char **tab);
-int		check_map(char **tab);
-void	check_lignes(char *str);
-int		ft_nb_obj(char **tab);
-void	ft_free_tab(char **tab);
+int	ft_print_str(char *str)
+{
+	int	i;
 
-#endif
+	i = 0;
+	if (str == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
+}
+
+int	ft_print_pcent(void)
+{
+	write(1, "%", 1);
+	return (1);
+}

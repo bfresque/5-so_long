@@ -6,16 +6,17 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:03:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 11:27:36 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:25:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 #include "includes/libft.h"
 #include "includes/so_long.h"
+#include "includes/ft_printf.h"
 #include <stdio.h>
 
-int	check_lignes(char *str)
+void	check_lignes(char *str)
 {
 	int	i;
 	int	check;
@@ -23,9 +24,8 @@ int	check_lignes(char *str)
 	i = 0;
 	if (str[i] == '\n')
 	{
-		printf("%s", "Error: first character cannot be a newline.\n"); // ALERTE PUT MY FT_PRINF
-		free(str);
-		exit(1);
+		ft_printf("%s", "Error: first character cannot be a newline.\n");
+		return (free(str), exit(1));
 	}
 	check = 0;
 	while (str[i])
@@ -35,9 +35,8 @@ int	check_lignes(char *str)
 			check++;
 			if (check >= 2)
 			{
-				printf("%s", "Error: more than two consecutive newlines.\n"); // ALERTE PUT MY FT_PRINF
-				free(str);
-				exit(1);
+				ft_printf("%s", "Error: more than two consecutive newlines.\n");
+				return (free(str), exit(1));
 			}
 		}
 		else
@@ -81,7 +80,7 @@ int	check_map(char **tab)
 		return (1);
 	else
 	{
-		printf("%s", "Error: The map aren't a closed rectangle.\n"); // ALERTE PUT MY FT_PRINF
+		ft_printf("%s", "Error: The map aren't a closed rectangle.\n");
 		ft_free_tab(tab);
 		exit(1);
 	}

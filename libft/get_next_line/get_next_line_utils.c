@@ -6,13 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:24:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 10:41:34 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:53:20 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-#include "../includes/libft.h"
-#include "../includes/so_long.h"
+#include "../../includes/get_next_line.h"
+#include "../../includes/libft.h"
+#include "../../includes/so_long.h"
 #include <stdio.h>
 
 size_t	ft_strlen(const char *s)

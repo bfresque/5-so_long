@@ -6,14 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:23:13 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 10:41:41 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 11:56:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-#include "../includes/libft.h"
-#include "../includes/so_long.h"
-#include <stdio.h>
+#include "../../includes/libft.h"
 
 static char	ft_separateur(char cmp, char c)
 {
@@ -115,4 +112,3 @@ char	**ft_split(char const *s, char c)
 	}
 	return (tab);
 }
-

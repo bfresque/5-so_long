@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:29:11 by bfresque         ###   ########.fr       */
+/*   Created: 2022/11/10 15:23:00 by bfresque          #+#    #+#             */
+/*   Updated: 2023/01/12 11:56:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/libft.h"
 
-int		ft_check_first_line(char **tab);
-int		ft_check_begin_line(char **tab);
-int		ft_check_end_line(char **tab);
-int		ft_check_last_line(char **tab);
-int		ft_check_lenght_line(char **tab);
-int		check_map(char **tab);
-void	check_lignes(char *str);
-int		ft_nb_obj(char **tab);
-void	ft_free_tab(char **tab);
-
-#endif
+void	ft_putnbr_fd(int n, int fd)
+{
+	if (n == -2147483648)
+	{
+		ft_putstr_fd("-2147483648", fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else
+	{
+		if (n > 9)
+		{
+			ft_putnbr_fd(n / 10, fd);
+		}
+		ft_putchar_fd('0' + n % 10, fd);
+	}
+}

@@ -6,13 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:24:07 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 10:41:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:29:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/get_next_line.h"
-#include "../includes/libft.h"
-#include "../includes/so_long.h"
+#include "../../includes/get_next_line.h"
+#include "../../includes/libft.h"
+#include "../../includes/so_long.h"
 #include <stdio.h>
 
 char	*ft_free(char *str, char *buffer)
@@ -68,7 +68,7 @@ char	*ft_buf(char *str)
 	return (dest);
 }
 
-char    *get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*str;
 	char		*buffer;

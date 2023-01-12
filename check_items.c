@@ -6,12 +6,13 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:43:08 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 11:26:31 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/12 12:26:41 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/get_next_line.h"
 #include "includes/libft.h"
+#include "includes/ft_printf.h"
 #include "includes/so_long.h"
 #include <stdio.h>
 
@@ -33,7 +34,9 @@ int	ft_count_obj(char **tab, char obj)
 			if (tab[j][i] != '0' && tab[j][i] != '1'
 				&& tab[j][i] != 'E' && tab[j][i] != 'C'
 				&& tab[j][i] != 'P')
-					return (0);
+			{
+				return (0);
+			}
 			i++;
 		}
 		j++;
@@ -54,7 +57,7 @@ int	ft_nb_obj(char **tab)
 		return (1);
 	else
 	{
-		printf("%s", "Error: There is a problem with item initialization.\n"); // ALERTE PUT MY FT_PRINF
+		ft_printf("%s", "Error: There is a problem with item initialization.\n");
 		ft_free_tab(tab);
 		exit(1);
 	}

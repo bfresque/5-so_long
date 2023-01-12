@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:29:11 by bfresque         ###   ########.fr       */
+/*   Created: 2022/11/21 11:24:47 by bfresque          #+#    #+#             */
+/*   Updated: 2023/01/12 11:56:24 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../../includes/libft.h"
 
-int		ft_check_first_line(char **tab);
-int		ft_check_begin_line(char **tab);
-int		ft_check_end_line(char **tab);
-int		ft_check_last_line(char **tab);
-int		ft_check_lenght_line(char **tab);
-int		check_map(char **tab);
-void	check_lignes(char *str);
-int		ft_nb_obj(char **tab);
-void	ft_free_tab(char **tab);
+void	ft_lstdelone(t_list *lst, void (*del)(void*))
+{
+	t_list	*elem;
 
-#endif
+	if (!lst || !del)
+		return ;
+	elem = lst->content;
+	del(elem);
+	free(lst);
+	lst = NULL;
+}
