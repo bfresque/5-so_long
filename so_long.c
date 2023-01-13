@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:27:56 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/13 15:55:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,12 @@ char	*read_file(char *map_file)
 	int		fd;
 	char	*temp;
 
-	fd = open(map_file, O_RDONLY);
+	fd = open(map_file, O_RDWR);
 	if (fd <= 0)
+	{
+		ft_printf("%s", "Error: Topening file for writing.\n");
 		return (NULL);
+	}
 	s1 = ft_calloc(sizeof(char), 1);
 	s2 = get_next_line(fd);
 	while (s2)
