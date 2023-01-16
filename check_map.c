@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:03:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:25:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:13:01 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_lignes(char *str)
 	i = 0;
 	if (str[i] == '\n')
 	{
-		ft_printf("%s", "Error: first character cannot be a newline.\n");
+		ft_printf("%s", "\nError: first character cannot be a newline.\n\n");
 		return (free(str), exit(1));
 	}
 	check = 0;
@@ -35,7 +35,7 @@ void	check_lignes(char *str)
 			check++;
 			if (check >= 2)
 			{
-				ft_printf("%s", "Error: more than two consecutive newlines.\n");
+				ft_printf("%s", "\nError: more than two consecutive newlines.\n\n");
 				return (free(str), exit(1));
 			}
 		}
@@ -80,7 +80,7 @@ int	check_map(char **tab)
 		return (1);
 	else
 	{
-		ft_printf("%s", "Error: The map aren't a closed rectangle.\n");
+		ft_printf("%s", "\nError: The map aren't a closed rectangle.\n\n");
 		ft_free_tab(tab);
 		exit(1);
 	}

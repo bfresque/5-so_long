@@ -6,14 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/13 15:55:16 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 15:04:27 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
-#include "includes/libft.h"
 #include "includes/so_long.h"
-#include <stdio.h>
 
 /*
 // 1- mettre la map dans un tableau en utilisant GNL, join et split
@@ -66,28 +63,48 @@ char	**load_map_file(char *map_file)
 	return (tab);
 }
 
+char	**ft_tabdup(char **tab)
+{
+	int		i;
+	char	**dup;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	dup = (char **)malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (tab[i])
+	{
+		dup[i] = ft_strdup(tab[i]);
+		i++;
+	}
+	dup[i] = 0;
+	return (dup);
+}
+
 char	**ft_put_in_tab(char *map_file)
 {
 	char	**tab;
+	char	**dup;
 	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
 	tab = load_map_file(map_file);
+	dup = ft_tabdup(tab);
 	if (tab == NULL)
 		return (NULL);
-
-	/******************TEST***********************/
-	printf("\nMAP : \n\n");
-	while(tab[i])
-	{
-		printf("%s\n", tab[i]);
+	while (tab[j])
+		j++;
+	while (tab[0][i])
 		i++;
-	}
-	printf("\nCheck item : %d\n\n", ft_nb_obj(tab));
-	printf("\nCheck map : %d\n\n", check_map(tab));
-	/******************TEST***********************/
-
+	print_tab(tab);//A SUPPRIMER
+	ft_nb_obj(tab);
 	check_map(tab);
+	block_exit(j, i, dup);
+	check_path(j, i, dup);
+	print_dup(dup);//A SUPPRIMER
 	ft_free_tab(tab);
 	return (tab);
 }
@@ -102,7 +119,7 @@ void	ft_free_tab(char **tab)
 	free(tab);
 }
 
-void	main()
+int	main(void)
 {
 	ft_put_in_tab("map1.ber");
 }
