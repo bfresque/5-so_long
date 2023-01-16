@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:31:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 15:12:24 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 16:49:40 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	block_exit(int o, int a, char **tab)
 	tab[y][x] = '1';
 }
 
-void	check_path(int o, int a, char **tab)
+int	check_path(int o, int a, char **tab)
 {
 	int	y;
 	int	x;
@@ -99,12 +99,12 @@ void	check_path(int o, int a, char **tab)
 		{
 			if (tab[j][i] == 'E' || tab[j][i] == 'C')
 			{
-				ft_printf("%s", "\nError: The pass aren't good !\n\n");
-				ft_free_tab(tab);
-				exit(1);
+				ft_printf("%s", "\nError: The path aren't good !\n\n");
+				return (0);
 			}
 			i++;
 		}
 		j++;
 	}
+	return (1);
 }

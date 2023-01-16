@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 14:49:41 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:37:47 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,14 @@ void	check_lignes(char *str);
 int		ft_nb_obj(char **tab);
 
 void	ft_free_tab(char **tab);
+char	**ft_tabdup(char **tab);
 
-void	check_path(int n, int m, char **tab);
+int		check_path(int n, int m, char **tab);
 void	block_exit(int o, int a, char **tab);
+int	ft_count_i(char **tab);
+int	ft_count_j(char **tab);
+
+
 
 /*************************************A SUPPRIMER *****************************/
 void print_tab(char **tab);

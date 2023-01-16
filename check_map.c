@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:03:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 15:13:01 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:45:26 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_lignes(char *str)
 			check++;
 			if (check >= 2)
 			{
-				ft_printf("%s", "\nError: more than two consecutive newlines.\n\n");
+				ft_printf("%s", "\nError: two consecutive newlines.\n\n");
 				return (free(str), exit(1));
 			}
 		}

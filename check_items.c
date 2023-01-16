@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:43:08 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 15:12:42 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/16 17:45:42 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	ft_nb_obj(char **tab)
 		return (1);
 	else
 	{
-		ft_printf("%s", "\nError: There is a problem with item initialization.\n\n");
+		ft_printf("%s", "Error: Problem with item initialization.\n\n");
 		ft_free_tab(tab);
 		exit(1);
 	}
