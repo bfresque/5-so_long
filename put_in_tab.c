@@ -6,30 +6,25 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 17:43:19 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:19:10 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-int	ft_open_file(char *map_file)
+char	*read_file(char *map_file)
 {
+	char	*s1;
+	char	*s2;
 	int		fd;
-	char	**tab;
+	char	*temp;
 
 	fd = open(map_file, O_RDWR);
 	if (fd <= 0)
 	{
-		ft_printf("%s", "\nError: To opening file for writing.\n\n");
-		return (0);
+		ft_printf("%s", "Error: Topening file for writing.\n");
+		return (NULL);
 	}
-	return (fd);
-}
-
-char	*ft_read_file(int fd, char *s1, char *s2)
-{
-	char	*temp;
-
 	s1 = ft_calloc(sizeof(char), 1);
 	s2 = get_next_line(fd);
 	while (s2)
@@ -44,56 +39,66 @@ char	*ft_read_file(int fd, char *s1, char *s2)
 	return (s1);
 }
 
-char	**ft_split_lines(char *s1)
+char	**load_map_file(char *map_file)
 {
+	char	*s1;
 	char	**tab;
 
+	s1 = read_file(map_file);
+	if (!s1)
+		return (NULL);
 	check_lignes(s1);
 	tab = ft_split(s1, '\n');
-	if (tab == NULL)
-		return (NULL);
 	free(s1);
 	return (tab);
 }
 
-char	**ft_create_dup(char **tab)
+char	**ft_tabdup(char **tab)
 {
-	int		j;
 	int		i;
-	char	**tab;
+	char	**dup;
 
 	i = 0;
-	j = 0;
-	while (tab[j])
-		j++;
-	while (tab[0][i])
+	while (tab[i])
 		i++;
-	dup = ft_tabdup(tab);
-	block_exit(j, i, dup);
+	dup = (char **)malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (tab[i])
+	{
+		dup[i] = ft_strdup(tab[i]);
+		i++;
+	}
+	dup[i] = 0;
 	return (dup);
 }
 
 char	**ft_put_in_tab(char *map_file)
 {
-	int		fd;
-	char	*s1;
-	char	*s2;
 	char	**tab;
 	char	**dup;
+	int		i;
+	int		j;
 
-	fd = ft_open_file(map_file);
-	tab = ft_read_file(fd, s1, s2);
-	dup = ft_create_dup(tab);
-	if (check_path(j, i, dup))
+	i = 0;
+	j = 0;
+	tab = load_map_file(map_file);
+	while (tab[j])
+		j++;
+	while (tab[0][i])
+		i++;
+	print_tab(tab);//A SUPPRIMER
+	ft_nb_obj(tab);
+	check_map(tab);
+	dup = ft_tabdup(tab);
+	if (dup == NULL)
 	{
-		print_dup(dup);
 		ft_free_tab(tab);
-		ft_free_tab(dup);
+		return (NULL);
 	}
-	else
-	{
-		ft_free_tab(tab);
-		ft_free_tab(dup);
-	}
+	block_exit(j, i, dup);
+	check_path(j, i, dup);
+	print_dup(dup);//A SUPPRIMER
+	maxi_free(tab, dup);
 	return (tab);
 }
+

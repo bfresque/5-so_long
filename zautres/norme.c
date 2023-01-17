@@ -1,49 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   norme.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 17:35:05 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/17 10:17:00 by bfresque         ###   ########.fr       */
+/*   Created: 2023/01/17 09:58:27 by bfresque          #+#    #+#             */
+/*   Updated: 2023/01/17 10:22:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
-
-int	ft_count_i(char **tab)
+char	**ft_put_in_tab(char *map_file)
 {
-	int	i;
+	char	**tab;
+	char	**dup;
+	int		i;
+	int		j;
 
 	i = 0;
-	while (tab[0][i])
-		i++;
-	return (i);
-}
-
-int	ft_count_j(char **tab)
-{
-	int	j;
-
 	j = 0;
+	tab = load_map_file(map_file);
 	while (tab[j])
 		j++;
-	return (j);
-}
-
-void	ft_free_tab(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-}
-
-void maxi_free(char **tab, char **dup)
-{
-	ft_free_tab(tab);
-	ft_free_tab(dup);
+	while (tab[0][i])
+		i++;
+	ft_nb_obj(tab);
+	check_map(tab);
+	dup = ft_tabdup(tab);
+	if (dup == NULL)
+	{
+		ft_free_tab(tab);
+		return (NULL);
+	}
+	block_exit(j, i, dup);
+	check_path(j, i, dup);
+	maxi_free(tab, dup);
+	return (tab);
 }
