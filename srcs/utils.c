@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:35:05 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/17 10:17:00 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:35:01 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 int	ft_count_i(char **tab)
 {

@@ -6,15 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:03:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/16 17:45:26 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:35:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
-#include "includes/libft.h"
-#include "includes/so_long.h"
-#include "includes/ft_printf.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
 void	check_lignes(char *str)
 {

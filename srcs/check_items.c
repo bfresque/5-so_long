@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:43:08 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/17 10:11:56 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/23 13:58:53 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 int	ft_count_obj(char **tab, char obj)
 {
@@ -53,7 +53,7 @@ int	ft_nb_obj(char **tab)
 		return (1);
 	else
 	{
-		ft_printf("%s", "Error: Problem with item initialization.\n\n");
+		ft_printf("%s", "\nError: Problem with item initialization.\n\n");
 		ft_free_tab(tab);
 		exit(1);
 	}

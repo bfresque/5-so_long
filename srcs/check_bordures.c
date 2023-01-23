@@ -6,14 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 10:43:50 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/12 12:10:57 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/17 10:35:54 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/get_next_line.h"
-#include "includes/libft.h"
-#include "includes/so_long.h"
-#include <stdio.h>
+#include "../includes/so_long.h"
 
 int	ft_check_first_line(char **tab)
 {

@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 10:24:11 by bfresque          #+#    #+#              #
-#    Updated: 2023/01/16 11:08:40 by bfresque         ###   ########.fr        #
+#    Updated: 2023/01/23 09:48:29 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,27 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra #-Werror
+CFLAGS = -Wall -Wextra -g3 #-Werror
 
-SRCS = main.c
+SRCS =	srcs/check_bordures.c \
+		srcs/check_items.c \
+		srcs/check_map.c \
+		srcs/check_path.c \
+		srcs/so_long.c \
+		srcs/utils.c \
+		srcs/put_in_tab.c \
+		srcs/put_in_windows.c \
+		libft/libft/ft_split.c \
+		libft/libft/ft_strdup.c \
+		libft/libft/ft_substr.c \
+		libft/get_next_line/get_next_line.c \
+		libft/get_next_line/get_next_line_utils.c \
+		libft/ft_printf/ft_print_b16.c \
+		libft/ft_printf/ft_print_nbr.c \
+		libft/ft_printf/ft_print_ptr.c \
+		libft/ft_printf/ft_print_str.c \
+		libft/ft_printf/ft_print_unbr.c \
+		libft/ft_printf/ft_printf.c \
 
 OBJS = $(SRCS:.c=.o)
 
@@ -41,4 +59,3 @@ fclean : clean
 re : fclean all
 
 .PHONY: all clean fclean re
-

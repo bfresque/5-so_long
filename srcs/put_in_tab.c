@@ -6,11 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/17 10:19:10 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/23 14:02:22 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/so_long.h"
+#include "../includes/so_long.h"
 
 char	*read_file(char *map_file)
 {
@@ -18,13 +18,13 @@ char	*read_file(char *map_file)
 	char	*s2;
 	int		fd;
 	char	*temp;
-
 	fd = open(map_file, O_RDWR);
 	if (fd <= 0)
 	{
-		ft_printf("%s", "Error: Topening file for writing.\n");
+		ft_printf("%s", "\nError: To opening file.\n\n");
 		return (NULL);
 	}
+
 	s1 = ft_calloc(sizeof(char), 1);
 	s2 = get_next_line(fd);
 	while (s2)
@@ -86,7 +86,6 @@ char	**ft_put_in_tab(char *map_file)
 		j++;
 	while (tab[0][i])
 		i++;
-	print_tab(tab);//A SUPPRIMER
 	ft_nb_obj(tab);
 	check_map(tab);
 	dup = ft_tabdup(tab);
@@ -96,9 +95,11 @@ char	**ft_put_in_tab(char *map_file)
 		return (NULL);
 	}
 	block_exit(j, i, dup);
-	check_path(j, i, dup);
-	print_dup(dup);//A SUPPRIMER
-	maxi_free(tab, dup);
+	if (check_path(j, i, dup) == 0)
+	{
+		ft_free_tab(dup);
+		return(0);
+	}
+	ft_free_tab(dup);
 	return (tab);
 }
-
