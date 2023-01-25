@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:42:30 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/23 13:55:26 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:41:23 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ void	ft_put_into_window(t_data *data, char **tab)
 		y++;
 	}
 }
+

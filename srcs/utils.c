@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:35:05 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/17 10:35:01 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:51:32 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ void	ft_free_tab(char **tab)
 	free(tab);
 }
 
-void maxi_free(char **tab, char **dup)
+void maxi_free(char **tab, char **dup, char **dupdup)
 {
 	ft_free_tab(tab);
 	ft_free_tab(dup);
+	ft_free_tab(dupdup);
 }
+

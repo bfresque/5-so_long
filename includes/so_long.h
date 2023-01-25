@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/23 14:53:03 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:38:02 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,12 @@ typedef struct	s_data {
 	char	**tab;
 	int		tab_width;
 	int		tab_height;
+	int		player_x;
+	int		player_y;
+	int		player_up;
+	int		player_down;
+	int		player_left;
+	int		player_right;
 	int		window_width;
 	int		window_height;
 	int		moves;
@@ -79,11 +85,14 @@ char	**ft_put_in_tab(char *map_file);
 /****************************    CHECK PATH    *********************************/
 int		check_path(int n, int m, char **tab);
 void	block_exit(int o, int a, char **tab);
+int	ultimate_check_path(int o, int a, char **dup);
+int	position_perso_i(int o, int a, char **tab, char find);
+int	position_perso_j(int o, int a, char **tab, char find);
 
 /****************************    UTILS         *********************************/
 int		ft_count_i(char **tab);
 int		ft_count_j(char **tab);
-void	maxi_free(char **tab, char **dup);
+void	maxi_free(char **tab, char **dup, char **dupdup);
 void	ft_free_tab(char **tab);
 
 /*************************************A SUPPRIMER *****************************/

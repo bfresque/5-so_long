@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/23 14:02:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/25 10:45:22 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,11 +94,10 @@ char	**ft_put_in_tab(char *map_file)
 		ft_free_tab(tab);
 		return (NULL);
 	}
-	block_exit(j, i, dup);
-	if (check_path(j, i, dup) == 0)
+	if (ultimate_check_path(j, i, dup) == 0)
 	{
-		ft_free_tab(dup);
-		return(0);
+		ft_free_tab(tab);
+		exit (1);
 	}
 	ft_free_tab(dup);
 	return (tab);
