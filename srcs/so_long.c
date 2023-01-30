@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:04:25 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:11:21 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	is_collectible(t_data *data)
 	return (collect);
 }
 
-int is_exit(t_data *data)
+int is_exit(t_data *data, int y, int x)
 {
 	if (is_collectible(data) == 0) //si on a plus de collectible alors
 	{
-		if (data->tab[data->player_y][data->player_x + 1] == 'E') //si le prochain est uene sortie alors
+		if (data->tab[y][x] == 'E') //si le prochain est uene sortie alors
 		{
 			ft_free_tab(data->tab);
 			exit(EXIT_SUCCESS);

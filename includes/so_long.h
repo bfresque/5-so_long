@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:00:41 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:11:13 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	ft_free_tab(char **tab);
 /****************************    MAIN          *********************************/
 void	ft_init_images(t_image *img);
 void	ft_put_into_window(t_data *data, char **tab);
-int is_exit(t_data *data);
+int is_exit(t_data *data, int y, int x);
 int	move_player(int keycode, t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:42:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:08:14 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:12:45 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	move_up(t_data *data)
 {
-	if (is_exit(data) == 1)
+	if (is_exit(data, data->player_y - 1, data->player_x) == 1)
 	{
 		if (data->tab[data->player_y - 1][data->player_x] != 'E')
 		{
@@ -30,7 +30,7 @@ void	move_up(t_data *data)
 
 void	move_down(t_data *data)
 {
-	if (is_exit(data) == 1)
+	if (is_exit(data, data->player_y + 1, data->player_x) == 1)
 	{
 		if (data->tab[data->player_y + 1][data->player_x] != 'E')
 		{
@@ -45,7 +45,7 @@ void	move_down(t_data *data)
 
 void	move_right(t_data *data)
 {
-	if (is_exit(data) == 1)
+	if (is_exit(data, data->player_y, data->player_x + 1) == 1)
 	{
 		if (data->tab[data->player_y][data->player_x + 1] != 'E')
 		{
@@ -60,7 +60,7 @@ void	move_right(t_data *data)
 
 void	move_left(t_data *data)
 {
-	if (is_exit(data) == 1)
+	if (is_exit(data, data->player_y, data->player_x - 1) == 1)
 	{
 		if (data->tab[data->player_y][data->player_x - 1] != 'E')
 		{
