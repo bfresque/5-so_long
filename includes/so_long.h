@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/25 10:38:02 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:00:41 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ typedef struct	s_data {
 	int		tab_height;
 	int		player_x;
 	int		player_y;
-	int		player_up;
-	int		player_down;
-	int		player_left;
-	int		player_right;
+	int		player_up;//
+	int		player_down;//
+	int		player_left;//
+	int		player_right;//
 	int		window_width;
 	int		window_height;
 	int		moves;
@@ -77,6 +77,7 @@ void	check_lignes(char *str);
 
 /****************************    CHECK ITEMS    *********************************/
 int		ft_nb_obj(char **tab);
+int	ft_count_obj(char **tab, char obj);
 
 /****************************    CHECK TAB      *********************************/
 char	**ft_tabdup(char **tab);
@@ -95,13 +96,10 @@ int		ft_count_j(char **tab);
 void	maxi_free(char **tab, char **dup, char **dupdup);
 void	ft_free_tab(char **tab);
 
-/*************************************A SUPPRIMER *****************************/
-void    print_tab(char **tab);//SUPPR
-void    print_dup(char **dup);//SUPPR
-// void	get_lines(char *map_file, t_data *data);
-void	get_map(char *map_file, t_data *data);
+/****************************    MAIN          *********************************/
 void	ft_init_images(t_image *img);
 void	ft_put_into_window(t_data *data, char **tab);
-
+int is_exit(t_data *data);
+int	move_player(int keycode, t_data *data);
 
 #endif
