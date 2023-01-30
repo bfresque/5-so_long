@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:31:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/24 16:57:38 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:17:54 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,6 @@ void	replace_adjacent(int y, int x, char **tab)
 	}
 }
 
-void	block_exit(int o, int a, char **tab)
-{
-	int	y;
-	int	x;
-
-	y = position_perso_j(o, a, tab, 'E');
-	x = position_perso_i(o, a, tab, 'E');
-	tab[y][x] = '1';
-}
-
 int	check_path(int o, int a, char **tab)
 {
 	int	y;
@@ -111,7 +101,7 @@ int	check_path(int o, int a, char **tab)
 
 int	ultimate_check_path(int o, int a, char **dup)
 {
-	char **dupdup;
+	char	**dupdup;
 
 	dupdup = ft_tabdup(dup);
 	if (dupdup == NULL)
@@ -120,14 +110,14 @@ int	ultimate_check_path(int o, int a, char **dup)
 	{
 		ft_free_tab(dup);
 		ft_free_tab(dupdup);
-		return(0);
+		return (0);
 	}
 	block_exit(o, a, dupdup);
 	if (check_path(o, a, dupdup) == 0)
 	{
 		ft_free_tab(dup);
 		ft_free_tab(dupdup);
-		return(0);
+		return (0);
 	}
-	return(1);
+	return (1);
 }

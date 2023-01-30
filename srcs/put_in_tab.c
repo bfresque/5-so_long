@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/25 10:45:22 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:21:33 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*read_file(char *map_file)
 	char	*s2;
 	int		fd;
 	char	*temp;
+
 	fd = open(map_file, O_RDWR);
 	if (fd <= 0)
 	{
 		ft_printf("%s", "\nError: To opening file.\n\n");
 		return (NULL);
 	}
-
 	s1 = ft_calloc(sizeof(char), 1);
 	s2 = get_next_line(fd);
 	while (s2)
@@ -79,13 +79,9 @@ char	**ft_put_in_tab(char *map_file)
 	int		i;
 	int		j;
 
-	i = 0;
-	j = 0;
 	tab = load_map_file(map_file);
-	while (tab[j])
-		j++;
-	while (tab[0][i])
-		i++;
+	i = ft_count_i(tab);
+	j = ft_count_j(tab);
 	ft_nb_obj(tab);
 	check_map(tab);
 	dup = ft_tabdup(tab);

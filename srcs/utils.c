@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:35:05 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/25 10:51:32 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 11:45:58 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,19 @@ void	ft_free_tab(char **tab)
 	free(tab);
 }
 
-void maxi_free(char **tab, char **dup, char **dupdup)
+void	maxi_free(char **tab, char **dup, char **dupdup)
 {
 	ft_free_tab(tab);
 	ft_free_tab(dup);
 	ft_free_tab(dupdup);
 }
 
+void	block_exit(int o, int a, char **tab)
+{
+	int	y;
+	int	x;
+
+	y = position_perso_j(o, a, tab, 'E');
+	x = position_perso_i(o, a, tab, 'E');
+	tab[y][x] = '1';
+}
