@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 10:24:11 by bfresque          #+#    #+#              #
-#    Updated: 2023/01/30 10:44:08 by bfresque         ###   ########.fr        #
+#    Updated: 2023/01/30 15:55:28 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,11 @@ NAME = so_long
 CC = gcc
 
 CFLAGS = -Wall -Wextra -g3 #-Werror
+
+GREEN = \033[92m
+YELLOW = \033[33m
+NEUTRAL = \033[0m
+I = \033[3m
 
 SRCS =	srcs/check_bordures.c \
 		srcs/check_items.c \
@@ -44,18 +49,22 @@ AR = ar rcs
 RM = rm -f
 
 %.o: %.c
-	$(CC) $(CFLAGS) -Iminilibx-Imlx -O3 -c $< -o $@
+	@$(CC) $(CFLAGS) -Iminilibx-Imlx -O3 -c $< -o $@
+	@echo "$(I)$(YELLOW)Compilating ... $(NEUTRAL)"
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -Lminilibx -lmlx -Lminilibx -lXext -lX11 -lm -lz -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -Lminilibx -lmlx -Lminilibx -lXext -lX11 -lm -lz -o $(NAME)
+	@echo "$(GREEN)Compilation Done $(NEUTRAL)"
 
 all : $(NAME)
 
 clean :
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@echo "$(GREEN)Object files removed $(NEUTRAL)"
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME)
+	@echo "$(GREEN)Binary file removed $(NEUTRAL)"
 
 re : fclean all
 

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 12:17:47 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:42:15 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,28 @@ int	is_exit(t_data *data, int y, int x)
 	return (1);
 }
 
+void	error_map_file(int ac, char **av)
+{
+	int fd;
+
+	if (av[1] != "*.ber")
+	{
+		ft_printf("%s", "\nError: name file must be in .ber\n\n");
+		exit(1);
+	}
+	fd = open(av[1], O_DIRECTORY);
+	if (fd > 0)
+	{
+		ft_printf("%s", "\nError: Cannot open a Directory.\n\n");
+		exit(1);
+	}
+	if (ac != 2)
+	{
+		ft_printf("%s", "\nError: Invalid number of arguments\n\n");
+		exit(1);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -60,12 +82,12 @@ int	main(int ac, char **av)
 	int		j;
 	int		i;
 
-	(void)ac;
+	error_map_file(ac, av);
 	data.mlx = mlx_init();
 	data.img = &img;
 	data.mlx_ptr = data.mlx;
-	ft_init_images(data.img);
 	data.tab = ft_put_in_tab(av[1]);
+	ft_init_images(data.img);
 	data.window_width = ft_count_i(data.tab) * 80;
 	data.window_height = ft_count_j(data.tab) * 80;
 	data.mlx_win = mlx_new_window(data.mlx, data.window_width,

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 12:21:33 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/01/30 17:22:49 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ char	**ft_put_in_tab(char *map_file)
 	int		j;
 
 	tab = load_map_file(map_file);
+	// free(map_file);
 	i = ft_count_i(tab);
 	j = ft_count_j(tab);
 	ft_nb_obj(tab);
