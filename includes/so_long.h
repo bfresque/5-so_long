@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 12:45:15 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:27:05 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int		ft_count_obj(char **tab, char obj);
 
 /***********************    CHECK TAB      ***************************/
 char	**ft_tabdup(char **tab);
-char	**ft_put_in_tab(char *map_file);
+void	ft_put_in_tab(t_data *data, char *map_file);//changement
 
 /***********************    CHECK PATH    ****************************/
 int		check_path(int n, int m, char **tab);
@@ -91,7 +91,6 @@ int		position_perso_j(int o, int a, char **tab, char find);
 /***********************    UTILS         ****************************/
 int		ft_count_i(char **tab);
 int		ft_count_j(char **tab);
-void	maxi_free(char **tab, char **dup, char **dupdup);
 void	ft_free_tab(char **tab);
 void	block_exit(int o, int a, char **tab);
 
@@ -100,5 +99,6 @@ void	ft_init_images(t_image *img);
 void	ft_put_into_window(t_data *data, char **tab);
 int		is_exit(t_data *data, int y, int x);
 int		move_player(int keycode, t_data *data);
+void	destroy(t_data *data);
 
 #endif

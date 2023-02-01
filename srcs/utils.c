@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:35:05 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:45:58 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/01 14:26:52 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,6 @@ void	ft_free_tab(char **tab)
 	while (tab[i])
 		free(tab[i++]);
 	free(tab);
-}
-
-void	maxi_free(char **tab, char **dup, char **dupdup)
-{
-	ft_free_tab(tab);
-	ft_free_tab(dup);
-	ft_free_tab(dupdup);
 }
 
 void	block_exit(int o, int a, char **tab)

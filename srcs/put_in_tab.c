@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 17:22:49 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/01 15:50:16 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,30 +72,29 @@ char	**ft_tabdup(char **tab)
 	return (dup);
 }
 
-char	**ft_put_in_tab(char *map_file)
+void	ft_put_in_tab(t_data *data, char *map_file)
 {
-	char	**tab;
 	char	**dup;
 	int		i;
 	int		j;
 
-	tab = load_map_file(map_file);
-	// free(map_file);
-	i = ft_count_i(tab);
-	j = ft_count_j(tab);
-	ft_nb_obj(tab);
-	check_map(tab);
-	dup = ft_tabdup(tab);
+	data->tab = load_map_file(map_file);
+	if (!data->tab)
+		exit(1);
+	i = ft_count_i(data->tab);
+	j = ft_count_j(data->tab);
+	ft_nb_obj(data->tab);
+	check_map(data->tab);
+	dup = ft_tabdup(data->tab);
 	if (dup == NULL)
 	{
-		ft_free_tab(tab);
-		return (NULL);
+		ft_free_tab(data->tab);
+		exit(1);
 	}
 	if (ultimate_check_path(j, i, dup) == 0)
 	{
-		ft_free_tab(tab);
-		exit (1);
+		ft_free_tab(data->tab);
+		exit(1);
 	}
 	ft_free_tab(dup);
-	return (tab);
 }
