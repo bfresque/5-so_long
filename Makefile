@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 10:24:11 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/02 12:26:00 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/02 15:51:08 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -g3 #-Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 GREEN = \033[92m
 YELLOW = \033[33m

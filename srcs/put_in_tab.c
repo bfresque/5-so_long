@@ -6,11 +6,21 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 12:36:21 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 17:11:22 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	probleme_with_s2(char *s1, char *s2)
+{
+	if (!s2)
+	{
+		ft_printf("%s", "\nError: The file is empty.\n\n");
+		free(s1);
+		exit(1);
+	}
+}
 
 char	*read_file(char *map_file)
 {
@@ -27,6 +37,7 @@ char	*read_file(char *map_file)
 	}
 	s1 = ft_calloc(sizeof(char), 1);
 	s2 = get_next_line(fd);
+	probleme_with_s2(s1, s2);
 	while (s2)
 	{
 		temp = s1;
