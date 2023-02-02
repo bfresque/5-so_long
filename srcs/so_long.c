@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/01 15:50:47 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 10:33:14 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,51 +112,27 @@ void	error_map_file(int ac, char **av)
 void	destroy_images(t_data *data)
 {
 	if (data->img->img_wall)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img->img_wall);
-		// free(data->img->img_wall);
-		// free(data->img->path_wall);
-	}
+		mlx_destroy_image(data->mlx, data->img->img_wall);
 	if (data->img->img_ground)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img->img_ground);
-		// free(data->img->img_ground);
-		// free(data->img->path_ground);
-	}
+		mlx_destroy_image(data->mlx, data->img->img_ground);
 	if (data->img->img_player)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img->img_player);
-		// free(data->img->img_player);
-		// free(data->img->path_player);
-	}
+		mlx_destroy_image(data->mlx, data->img->img_player);
 	if (data->img->img_collect)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img->img_collect);
-		// free(data->img->img_collect);
-		// free(data->img->path_collect);
-	}
+		mlx_destroy_image(data->mlx, data->img->img_collect);
 	if (data->img->img_exit)
-	{
-		mlx_destroy_image(data->mlx_ptr, data->img->img_exit);
-		// free(data->img->img_exit);
-		// free(data->img->img_exit);
-	}
+		mlx_destroy_image(data->mlx, data->img->img_exit);
 }
 
 void	destroy(t_data *data)
 {
-	destroy_images(data);
-	// if (data->img)
-	// 	mlx_destroy_image(data->mlx_ptr, data->img);
-	// free(data->img);
-	if (data->mlx_win)
-		mlx_destroy_window(data->mlx_ptr, data->mlx_win);
-	if (data->mlx_ptr)
-		mlx_destroy_display(data->mlx_ptr);
-	free(data->mlx_ptr);
 	if (data->tab)
 		ft_free_tab(data->tab);
-	// free(data);
+	destroy_images(data);
+	if (data->mlx_win)
+		mlx_destroy_window(data->mlx, data->mlx_win);
+	if (data->mlx)
+		mlx_destroy_display(data->mlx);
+	free(data->mlx);
 }
 
 int	main(int ac, char **av)
@@ -170,8 +146,7 @@ int	main(int ac, char **av)
 	ft_put_in_tab(&data, av[1]);
 	data.mlx = mlx_init();
 	data.img = &img;
-	data.mlx_ptr = data.mlx;
-	ft_init_images(data.img);
+	ft_init_images(&data ,data.img);
 	data.window_width = ft_count_i(data.tab) * 80;
 	data.window_height = ft_count_j(data.tab) * 80;
 	data.mlx_win = mlx_new_window(data.mlx, data.window_width,
@@ -186,5 +161,4 @@ int	main(int ac, char **av)
 	mlx_hook(data.mlx_win, 3, 1L << 1, close_game_esc, &data);
 	mlx_hook(data.mlx_win, 17, 1L << 17, close_game_mouse, &data);
 	mlx_loop(data.mlx);
-	// free(av[1]);
 }
