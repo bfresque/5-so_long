@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:31:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:17:54 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:06:25 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,5 +119,6 @@ int	ultimate_check_path(int o, int a, char **dup)
 		ft_free_tab(dupdup);
 		return (0);
 	}
+	ft_free_tab(dupdup);
 	return (1);
 }

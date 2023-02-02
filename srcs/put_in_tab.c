@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:21:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 10:09:48 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 11:02:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ char	**ft_tabdup(char **tab)
 	while (tab[i])
 		i++;
 	dup = (char **)malloc(sizeof(char *) * (i + 1));
+	if(dup == NULL)
+		return(NULL);
 	i = 0;
 	while (tab[i])
 	{
