@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:42:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/01/30 11:18:49 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:33:23 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	move_up(t_data *data)
 			data->player_y -= 1;
 			data->tab[data->player_y][data->player_x] = 'P';
 			data->moves++;
-			ft_printf("%d\n", data->moves);
+			ft_printf("Moves counter : \033[0;32m%d\033[0m\n", data->moves);
 		}
 	}
 }
@@ -38,7 +38,7 @@ void	move_down(t_data *data)
 			data->player_y += 1;
 			data->tab[data->player_y][data->player_x] = 'P';
 			data->moves++;
-			ft_printf("%d\n", data->moves);
+			ft_printf("Moves counter : \033[0;32m%d\033[0m\n", data->moves);
 		}
 	}
 }
@@ -53,7 +53,7 @@ void	move_right(t_data *data)
 			data->player_x += 1;
 			data->tab[data->player_y][data->player_x] = 'P';
 			data->moves++;
-			ft_printf("%d\n", data->moves);
+			ft_printf("Moves counter : \033[0;32m%d\033[0m\n", data->moves);
 		}
 	}
 }
@@ -68,7 +68,7 @@ void	move_left(t_data *data)
 			data->player_x -= 1;
 			data->tab[data->player_y][data->player_x] = 'P';
 			data->moves++;
-			ft_printf("%d\n", data->moves);
+			ft_printf("Moves counter : \033[0;32m%d\033[0m\n", data->moves);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 10:10:56 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/02 12:37:29 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,18 @@ int		ft_count_j(char **tab);
 void	ft_free_tab(char **tab);
 void	block_exit(int o, int a, char **tab);
 
+/*******************     CLOSE GAME          **************************/
+void	destroy(t_data *data);
+int		close_game_esc(int keycode, t_data *data);
+int		close_game_mouse(t_data *data);
+int		is_exit(t_data *data, int y, int x);
+
 /***********************    MAIN          ****************************/
 void	ft_init_images(t_data *data, t_image *img);
 void	ft_put_into_window(t_data *data, char **tab);
 int		is_exit(t_data *data, int y, int x);
 int		move_player(int keycode, t_data *data);
 void	destroy(t_data *data);
-
-/*******************    j'ai suppr          **************************/
-// int		check_path(int n, int m, char **tab);
-// void	block_exit(int o, int a, char **tab);
-// int		ft_check_lenght_line(char **tab);
+int		is_collectible(t_data *data);
 
 #endif

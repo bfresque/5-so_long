@@ -6,7 +6,7 @@
 #    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 10:24:11 by bfresque          #+#    #+#              #
-#    Updated: 2023/01/30 15:55:28 by bfresque         ###   ########.fr        #
+#    Updated: 2023/02/02 12:26:00 by bfresque         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS =	srcs/check_bordures.c \
 		srcs/put_in_tab.c \
 		srcs/put_in_windows.c \
 		srcs/move_player.c \
+		srcs/close_game.c \
 		libft/libft/ft_split.c \
 		libft/libft/ft_strdup.c \
 		libft/libft/ft_substr.c \
