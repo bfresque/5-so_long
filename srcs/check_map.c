@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:03:48 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 17:01:55 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/03 09:28:36 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	check_lignes(char *str)
 	i = 0;
 	if (str[i] == '\n')
 	{
-		ft_printf("%s", "\nError: first character cannot be a newline.\n\n");
+		ft_printf("%s", "\nError: First character cannot be a newline.\n\n");
 		return (free(str), exit(1));
 	}
 	check = 0;
@@ -31,7 +31,7 @@ void	check_lignes(char *str)
 			check++;
 			if (check >= 2)
 			{
-				ft_printf("%s", "\nError: two consecutive newlines.\n\n");
+				ft_printf("%s", "\nError: Two consecutive newlines.\n\n");
 				return (free(str), exit(1));
 			}
 		}

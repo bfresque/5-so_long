@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 09:42:30 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 16:47:25 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/03 10:17:06 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_image(t_data *data)
 		|| !data->img->img_exit || !data->img->img_collect
 		|| !data->img->img_player)
 	{
-		ft_printf("Erreur: une des images est introuvable");
+		ft_printf("Erreur: One of the images is not found.");
 		destroy(data);
 		exit(1);
 	}

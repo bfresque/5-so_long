@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 17:28:02 by bfresque         ###   ########.fr       */
+/*   Updated: 2023/02/03 10:15:28 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	main(int ac, char **av)
 	data.img = &img;
 	data.window_width = ft_count_i(data.tab) * 80;
 	data.window_height = ft_count_j(data.tab) * 80;
-	if ((data.window_width > 2560) || (data.window_height > 1440))
+	if ((data.window_width > 2560) || (data.window_height > 1360))
 	{
 		ft_free_tab(data.tab);
 		mlx_destroy_display(data.mlx);
