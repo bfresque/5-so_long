@@ -1,72 +1,122 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/16 10:24:11 by bfresque          #+#    #+#              #
-#    Updated: 2023/02/02 15:51:08 by bfresque         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
+# Project Name
 NAME = so_long
 
+# Compiler and Flags
 CC = gcc
-
 CFLAGS = -Wall -Wextra -Werror -g3
 
+# Colors
 GREEN = \033[92m
 YELLOW = \033[33m
-NEUTRAL = \033[0m
-I = \033[3m
+BLUE = \033[34m
+CYAN = \033[36m
+RESET = \033[0m
 
-SRCS =	srcs/check_bordures.c \
-		srcs/check_items.c \
-		srcs/check_map.c \
-		srcs/check_path.c \
-		srcs/so_long.c \
-		srcs/utils.c \
-		srcs/put_in_tab.c \
-		srcs/put_in_windows.c \
-		srcs/move_player.c \
-		srcs/close_game.c \
-		libft/libft/ft_split.c \
-		libft/libft/ft_strdup.c \
-		libft/libft/ft_substr.c \
-		libft/get_next_line/get_next_line.c \
-		libft/get_next_line/get_next_line_utils.c \
-		libft/ft_printf/ft_print_b16.c \
-		libft/ft_printf/ft_print_nbr.c \
-		libft/ft_printf/ft_print_ptr.c \
-		libft/ft_printf/ft_print_str.c \
-		libft/ft_printf/ft_print_unbr.c \
-		libft/ft_printf/ft_printf.c \
+# Directories
+SRCS_DIR = srcs/
+LIBFT_DIR = libft/libft/
+GNL_DIR = libft/get_next_line/
+PRINTF_DIR = libft/ft_printf/
+OBJS_DIR = obj/
+MLX_DIR = includes/minilibx-linux/
+MLX_REPO = https://github.com/42Paris/minilibx-linux.git
 
-OBJS = $(SRCS:.c=.o)
+# MinilibX Flags
+MLX_FLAGS = -L $(MLX_DIR) -lmlx -lX11 -lXext -lm
+MLX_INCLUDE = -I $(MLX_DIR)
+MLX_LIB = $(MLX_DIR)libmlx.a
+MLX_CLONED := $(shell [ -d $(MLX_DIR) ] && echo 1)
 
-AR = ar rcs
+# Source and Object Files
+SRCS = $(SRCS_DIR)check_bordures.c \
+       $(SRCS_DIR)check_items.c \
+       $(SRCS_DIR)check_map.c \
+       $(SRCS_DIR)check_path.c \
+       $(SRCS_DIR)so_long.c \
+       $(SRCS_DIR)utils.c \
+       $(SRCS_DIR)put_in_tab.c \
+       $(SRCS_DIR)put_in_windows.c \
+       $(SRCS_DIR)move_player.c \
+       $(SRCS_DIR)close_game.c
 
-RM = rm -f
+LIBFT_SRCS = $(LIBFT_DIR)ft_split.c \
+             $(LIBFT_DIR)ft_strdup.c \
+             $(LIBFT_DIR)ft_substr.c
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -Iminilibx-Imlx -O3 -c $< -o $@
-	@echo "$(I)$(YELLOW)Compilating ... $(NEUTRAL)"
+GNL_SRCS = $(GNL_DIR)get_next_line.c \
+           $(GNL_DIR)get_next_line_utils.c
 
-$(NAME): $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -Lminilibx -lmlx -Lminilibx -lXext -lX11 -lm -lz -o $(NAME)
-	@echo "$(GREEN)Compilation Done $(NEUTRAL)"
+PRINTF_SRCS = $(PRINTF_DIR)ft_print_b16.c \
+              $(PRINTF_DIR)ft_print_nbr.c \
+              $(PRINTF_DIR)ft_print_ptr.c \
+              $(PRINTF_DIR)ft_print_str.c \
+              $(PRINTF_DIR)ft_print_unbr.c \
+              $(PRINTF_DIR)ft_printf.c
 
-all : $(NAME)
+# Object Files
+OBJS = $(addprefix $(OBJS_DIR), $(notdir $(SRCS:.c=.o)))
+LIBFT_OBJS = $(addprefix $(OBJS_DIR), $(notdir $(LIBFT_SRCS:.c=.o)))
+GNL_OBJS = $(addprefix $(OBJS_DIR), $(notdir $(GNL_SRCS:.c=.o)))
+PRINTF_OBJS = $(addprefix $(OBJS_DIR), $(notdir $(PRINTF_SRCS:.c=.o)))
 
-clean :
-	@$(RM) $(OBJS)
-	@echo "$(GREEN)Object files removed $(NEUTRAL)"
+ALL_OBJS = $(OBJS) $(LIBFT_OBJS) $(GNL_OBJS) $(PRINTF_OBJS)
 
-fclean : clean
-	@$(RM) $(NAME)
-	@echo "$(GREEN)Binary file removed $(NEUTRAL)"
+# Rules
+all: mlx $(NAME)
 
-re : fclean all
+# Clone and Build MinilibX with a progress bar
+mlx:
+ifeq ($(MLX_CLONED),)
+	@echo "$(CYAN)\nCloning MinilibX repository...$(RESET)"
+	@git clone $(MLX_REPO) $(MLX_DIR) > /dev/null 2>&1
+	@echo "$(YELLOW)Compiling MinilibX... Please wait...$(RESET)"
+	@$(MAKE) -C $(MLX_DIR) > /dev/null 2>&1 & \
+	{ \
+		for i in $$(seq 1 100); do \
+			sleep 0.02; \
+			printf "$(GREEN)\r[%-50s] %d%%$(RESET)" "$$(printf '#%.0s' $$(seq 1 $$(($$i / 2))))" "$$i"; \
+		done; \
+	}
+	@echo "\n$(GREEN)MinilibX compiled successfully!$(RESET)"
+else
+	@echo "$(GREEN)MinilibX already exists. Skipping clone.$(RESET)"
+endif
 
-.PHONY: all clean fclean re
+# Compile the project
+$(NAME): $(ALL_OBJS)
+	@$(CC) $(CFLAGS) $(ALL_OBJS) $(MLX_FLAGS) -o $(NAME)
+	@echo "$(GREEN)Compilation Done!$(RESET)"
+
+# Create obj/ directory and compile object files
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c | $(OBJS_DIR)
+	@$(CC) $(CFLAGS) $(MLX_INCLUDE) -c $< -o $@
+	@echo "$(YELLOW)Compiling $< into $(notdir $@)...$(RESET)"
+
+$(OBJS_DIR)%.o: $(LIBFT_DIR)%.c | $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiling $< into $(notdir $@)...$(RESET)"
+
+$(OBJS_DIR)%.o: $(GNL_DIR)%.c | $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiling $< into $(notdir $@)...$(RESET)"
+
+$(OBJS_DIR)%.o: $(PRINTF_DIR)%.c | $(OBJS_DIR)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(YELLOW)Compiling $< into $(notdir $@)...$(RESET)"
+
+$(OBJS_DIR):
+	@mkdir -p $(OBJS_DIR)
+	@echo "$(BLUE)Creating obj directory...$(RESET)"
+
+# Clean up
+clean:
+	@rm -rf $(OBJS_DIR)
+	@echo "$(GREEN)Object files removed.$(RESET)"
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo "$(GREEN)Binary removed.$(RESET)"
+
+re: fclean all
+
+.PHONY: all clean fclean re mlx

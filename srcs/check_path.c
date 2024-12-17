@@ -6,12 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:31:18 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 11:06:25 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:45:10 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include <stdio.h>
 
 int	position_perso_j(int o, int a, char **tab, char find)
 {

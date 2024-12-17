@@ -6,12 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 10:27:06 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/03 10:15:28 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:44:51 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../minilibx/mlx.h"
 
 int	is_collectible(t_data *data)
 {

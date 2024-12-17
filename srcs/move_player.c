@@ -6,12 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 10:42:10 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 12:33:23 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:44:57 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../minilibx/mlx.h"
 
 void	move_up(t_data *data)
 {

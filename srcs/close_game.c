@@ -6,12 +6,11 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 12:22:02 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 12:36:40 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:45:00 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-#include "../minilibx/mlx.h"
 
 int	close_game_mouse(t_data *data)
 {

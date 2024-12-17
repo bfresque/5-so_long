@@ -6,7 +6,7 @@
 /*   By: bfresque <bfresque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 11:08:04 by bfresque          #+#    #+#             */
-/*   Updated: 2023/02/02 12:37:29 by bfresque         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:43:48 by bfresque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 # include <stdio.h>
-# include "../minilibx/mlx.h"
+# include "../includes/minilibx-linux/mlx.h"
 # include "../includes/get_next_line.h"
 # include "../includes/libft.h"
 # include "../includes/so_long.h"
